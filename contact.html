@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body{
+            padding-left: 200px;
+            padding-top: 30px;
+            background-color: cyan;
+            /* display:flex; */
+        }
+        .design{
+            font-size: 20px;
+            font-style: italic;
+        }
+        .design input{
+            width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            border-radius: 3px;
+            font-size: 20px;
+        }
+        .button{
+            width: 90px;
+            height: 50px;
+            font-size: 20px;
+            color: rgb(139, 21, 0);
+            margin-top: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        h1{
+            color: rgb(255, 30, 0);
+            font-style: italic;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .formerror{
+            color: red;
+            font-style:inherit;
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <h1>My personal details</h1>
+<hr>
+<br>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <div class="design" id="name">
+                Enter Your Name <input type="text" name="formname">
+                <b><span class="formerror"></span></b>
+            </div>
+        <br>
+            <div class="design" id="email">
+                Enter Your Email <input type="email" name="formemail">
+                <b><span class="formerror"></span></b>
+            </div>
+        <br>
+            <div class="design" id="phone">
+                Enter Your Phone.No <input type="number" name="formphone">
+                <b><span class="formerror"></span></b>
+            </div>
+        <br>
+    <input class="button" type="submit" value="SUBMIT" >
+</form>
+</body>
+
+<script>
+
+
+function err(id,error){
+element=document.getElementById(id);
+element.getElementsByClassName('formerror')[0].innerHTML = error;
+}
+// to avoid in every line in func validate form
+
+function validateForm() {
+var name=document.forms["myForm"]["formname"].value;
+var email=document.forms["myForm"]["formemail"].value;
+var phone=document.forms["myForm"]["formphone"].value;
+
+if(name.length==''){
+err("name","*Mandatory field");
+return false;
+}
+else
+ {
+  if(name.length<2){
+  err("name","Enter valid name.");
+  return false;}
+ }
+
+if(email.length==''){
+err("email","*Mandatory field.");
+return false;}
+else
+{
+ if(email.length<15){
+ err("email","Enter valid email.");
+ return false;}
+}
+
+if(phone.length==''){
+err("phone","*Mandatory field");
+return false;}
+else
+{
+ if(phone.length<10){
+ err("phone","Phone.No Should be of 10 digits.");
+ return false;}
+}
+}
+</script>
+</html>
+<SCRIPT Language=VBScript></SCRIPT>
+
+
+
